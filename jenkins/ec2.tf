@@ -15,7 +15,7 @@ resource "aws_instance" "jenkins_ec2" {
   user_data = "${data.template_file.jenkins_userdata.rendered}"
 
   tags {
-    Name            = "Jenkins-${var.env_name}-${var.region}"
+    Name            = "mule-nginx-${var.env_name}-${var.region}"
     ManagedBy       = "Terraform"
     IamInstanceRole = "${aws_iam_role.jenkins_iam_role.name}"
   }
