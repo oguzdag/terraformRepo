@@ -1,28 +1,10 @@
 #!/bin/sh
-
-cat > /etc/nginx/conf.d/default.conf <<EOF
-log_format addHeaderlog '$remote_addr - $remote_user [$time_local] '
-                '"$request" $status $body_bytes_sent '
-                '"$http_referer" "$http_user_agent" "$http_x_forwarded_for" "$request_body"';
-
-
-access_log  /var/log/nginx/access.log  addHeaderlog;
-error_log /var/log/nginx/error.log info;
-
-server {
-  listen 80;
-  status_zone backend;
-  root /usr/share/nginx/html;
-  location / {
-  }
-
-  location = /status.html {
-  }
-  location /status {
-    access_log off;
-    status;
-  }
-}
-EOF
-
+echo "Creating tmp folder"
+sudo mkdir -p /tmp/nginx_conf
+echo "Downloading default.conf"
+sudo aws s3 cp --region us-east-1 ${s3_bucket_nginx_conf} /tmp/nginx_conf --recursive
+echo "Updating nginx conf folder"
+sudo cp /tmp/nginx_conf/default.conf /etc/nginx/conf.d/
+echo "Cleaning up tmp folder"
+rm -rf /tmp/nginx_conf
 nginx -s reload

@@ -1,5 +1,6 @@
 variable "access_key" {}
 variable "secret_key" {}
+variable "s3_bucket_nginx_conf" {}
 data "aws_availability_zones" "available" {}
 
 variable "region" {
@@ -10,7 +11,7 @@ variable "aws_amis" {
   type = "map"
 
   default = {
-    "us-east-1" = "ami-54825e2b" # Custom AMI built with packer
+    "us-east-1" = "ami-ebdb0794" # Custom AMI built with packer
   }
 }
 
