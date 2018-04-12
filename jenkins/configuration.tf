@@ -5,7 +5,7 @@ provider "aws" {
 }
 
 resource "aws_key_pair" "provisioner" {
-  key_name   = "terransible_provisioner"
+  key_name   = "jenkins-keypair"
   public_key = "${file("keys/jenkins-key.pub")}"
 }
 

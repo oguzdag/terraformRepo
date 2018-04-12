@@ -57,6 +57,8 @@ apt-get install -y oracle-java8-set-default
 echo "Installing minikube"
 
 
+
+
 echo "Installing Jenkins"
 wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
 if ! grep -q "deb https://pkg.jenkins.io/debian binary/" /etc/apt/sources.list; then
