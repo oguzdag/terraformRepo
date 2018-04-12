@@ -37,7 +37,7 @@ variable "env_name" {
 }
 
 variable "instance_type" {
-  default = "t2.medium"
+  default = "m4.large"
 }
 
 variable "vpc_cidr" {
