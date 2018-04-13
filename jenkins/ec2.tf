@@ -26,6 +26,15 @@ resource "aws_instance" "jenkins_ec2" {
     volume_size = "250"
 
     # Safe guard for your jenkins and docker data
-    #delete_on_termination = "false"
+    delete_on_termination = "false"
   }
+}
+
+resource "aws_eip" "lb" {
+  vpc = true
+}
+
+resource "aws_eip_association" "eip_assoc" {
+  instance_id   = "${aws_instance.jenkins_ec2.id}"
+  allocation_id = "${aws_eip.lb.id}"
 }
