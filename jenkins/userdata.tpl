@@ -127,6 +127,7 @@ for each in "
     slack
     role-strategy
     pipeline-utility-steps
+    kubernetes-cd
 ";
 do
     java -jar /root/jenkins-cli.jar -s http://localhost:8080/ install-plugin $each ;
