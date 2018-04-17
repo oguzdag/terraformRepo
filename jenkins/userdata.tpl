@@ -54,10 +54,10 @@ apt-get update
 apt-get install -y oracle-java8-installer
 apt-get install -y oracle-java8-set-default
 
-echo "Installing minikube"
-
-
-
+echo "Installing kubectl"
+wget -O kubectl https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+sudo mv ./kubectl /usr/local/bin/kubectl
 
 echo "Installing Jenkins"
 wget -q -O - https://pkg.jenkins.io/debian/jenkins.io.key | sudo apt-key add -
